@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#37393B"
-    tools:context="com.kpocom.wulilc.noteperjectapplication.activity.WStartApplicationActivity">
+    tools:context="com.kpocom.wulilc.noteperjectapplication.activity.WApplicationMainActivity">
+
+    <com.heima.tabview.library.TabView
+        android:id="@+id/tabView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.heima.tabview.library.TabView>
 
 </android.support.constraint.ConstraintLayout>
