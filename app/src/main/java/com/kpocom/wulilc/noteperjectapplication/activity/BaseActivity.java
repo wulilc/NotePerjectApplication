@@ -1,8 +1,10 @@
 package com.kpocom.wulilc.noteperjectapplication.activity;
 
 import android.app.Activity;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.kpocom.wulilc.noteperjectapplication.utils.Writelog;
 
@@ -10,7 +12,7 @@ import com.kpocom.wulilc.noteperjectapplication.utils.Writelog;
  * Created by wulilc on 2018/1/30.
  */
 
-public abstract class BaseActivity extends Activity implements View.OnClickListener{
+public abstract class BaseActivity <T extends ViewDataBinding> extends AppCompatActivity{
     private String TAG;
 
     public BaseActivity(String TAG){
@@ -29,13 +31,6 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     public abstract void onCreate();
     public abstract void InitView();
     public abstract void InitData();
-
-    @Override
-    public void onClick(View v) {
-        SetViewOnClickLister();
-    }
-
-    public abstract void SetViewOnClickLister();
 
     @Override
     protected void onStart() {
