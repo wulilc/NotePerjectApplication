@@ -1,4 +1,5 @@
 /build
+<<<<<<< HEAD
 .idea
 .gradle
 /local.properties
@@ -35,3 +36,5 @@ proguard/
 
 # Log Files
 *.log
+=======
+>>>>>>> 99fba95e00655a6bde759f7d23f3f69181587488

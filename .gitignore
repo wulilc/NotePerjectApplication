@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.iml
 .gradle
 /local.properties
@@ -7,3 +8,66 @@
 /build
 /captures
 .externalNativeBuild
+=======
+#built application files
+*.apk
+*.ap_
+
+
+# files for the dex VM
+*.dex
+
+
+# Java class files
+*.class
+
+
+# generated files
+bin/
+gen/
+
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Local configuration file(keystrore文件路径)
+gradle.properties
+# Windows thumbnail db
+Thumbs.db
+
+
+# OSX files
+.DS_Store
+
+
+# Eclipse project files
+.classpath
+.project
+
+
+# Android Studio
+.idea
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.gradle
+build/
+
+
+# Signing files
+.signing/
+
+
+# User-specific configurations
+.ideabraries/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.ideacs.xml
+*.iml
+libs/
+>>>>>>> 99fba95e00655a6bde759f7d23f3f69181587488
