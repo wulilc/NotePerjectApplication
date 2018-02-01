@@ -137,8 +137,9 @@ public class WSocketTCPCommunication {
                         sleep(10 * 1000);
                         continue;
                     }
-                    onSocketTCPCommunicationDataR.onSocketTCPCommunication(temp,0,recvLen);
-
+                    if (onSocketTCPCommunicationDataR!=null){
+                        onSocketTCPCommunicationDataR.onSocketTCPCommunication(temp,0,recvLen);
+                    }
                 } catch (Exception e) {
                     Writelog.e(TAG, "closesocket!");
                     wCloseSocketConnect();

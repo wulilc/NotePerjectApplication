@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.kpocom.wulilc.noteperjectapplication.database.wobjectmodel.WUserInfo;
+import com.kpocom.wulilc.noteperjectapplication.database.wobjectmodel.WUserInfoModel;
 
 import java.sql.SQLException;
 
@@ -24,7 +24,7 @@ public class DataOpenHalper extends OrmLiteSqliteOpenHelper{
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         //创建表
         try {
-            TableUtils.createTable(connectionSource, WUserInfo.class);
+            TableUtils.createTable(connectionSource, WUserInfoModel.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,5 @@
 package com.kpocom.wulilc.noteperjectapplication.activity;
 
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -11,6 +10,7 @@ import com.heima.tabview.library.TabView;
 import com.heima.tabview.library.TabViewChild;
 import com.kpocom.wulilc.noteperjectapplication.R;
 import com.kpocom.wulilc.noteperjectapplication.fragment.WMainHomeFragment;
+import com.kpocom.wulilc.noteperjectapplication.nets.WPostRequstWeatherInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,9 @@ public class WApplicationMainActivity extends AppCompatActivity {
         tabView= (TabView) findViewById(R.id.tabView);
 
         initView();
+
+        WPostRequstWeatherInterface wPostRequstWeatherInterface = new WPostRequstWeatherInterface();
+        wPostRequstWeatherInterface.wpostRequstWeather();
 
     }
 

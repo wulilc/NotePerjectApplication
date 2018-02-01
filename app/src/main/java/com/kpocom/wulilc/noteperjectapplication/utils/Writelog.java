@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class Writelog {
 
-    private static boolean isDebug = false;
+    private static boolean isDebug = true;
 
     private Writelog() {
     }

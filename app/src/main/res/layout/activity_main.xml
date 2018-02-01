@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:background="#37393B"
     tools:context="com.kpocom.wulilc.noteperjectapplication.activity.WStartApplicationActivity">
-=======
     tools:context="com.example.wulilc.noteperjectapplication.MainActivity">
 
     <TextView
@@ -18,6 +16,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 99fba95e00655a6bde759f7d23f3f69181587488
 
 </android.support.constraint.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.kpocom.wulilc.noteperjectapplication.database.wobjectmodel;
 
 import android.content.Context;
-import android.view.View;
 
 import com.j256.ormlite.android.AndroidDatabaseConnection;
 import com.j256.ormlite.dao.Dao;
@@ -16,7 +15,7 @@ import java.sql.Savepoint;
  * Created by wulilc on 2018/1/30.
  */
 
-public class WUserInfo {
+public class WUserInfoModel {
 
     /**
      * Created by wulilc on 2018/1/30.
@@ -33,10 +32,10 @@ public class WUserInfo {
         @DatabaseField(columnName = "wuserphonenumber")
         private String wuserphonenumber;
 
-        public WUserInfo() {
+        public WUserInfoModel() {
         }
 
-        public WUserInfo(int userid, String wusername, String wuserpassword, String wuseremail, String wuserphonenumber) {
+        public WUserInfoModel(int userid, String wusername, String wuserpassword, String wuseremail, String wuserphonenumber) {
             this.userid = userid;
             this.wusername = wusername;
             this.wuserpassword = wuserpassword;
@@ -45,7 +44,7 @@ public class WUserInfo {
         }
 
 
-    public void testAddUser(Context context,WUserInfo wUserInfo) {
+    public void testAddUser(Context context,WUserInfoModel wUserInfo) {
         boolean isLoginOk = false;
         //2.保存到sdcard或者rom中，使用sp/文件、sqlite
         DataOpenHalper takeoutOpenHelper = new DataOpenHalper(context);
@@ -55,9 +54,9 @@ public class WUserInfo {
         try {
             savepoint = connection.setSavePoint("start"); //事务的保存点
             connection.setAutoCommit(false); //事务处理需要手动提交
-            Dao<WUserInfo,Integer> userDao = takeoutOpenHelper.getDao(WUserInfo.class);
+            Dao<WUserInfoModel,Integer> userDao = takeoutOpenHelper.getDao(WUserInfoModel.class);
 //            userDao.createIfNotExists(user);  //如果之前已经有该用户，不再创建，更新用户信息
-            WUserInfo oldUser = userDao.queryForId(001);
+            WUserInfoModel oldUser = userDao.queryForId(001);
             if(oldUser!=null){
                 userDao.update(wUserInfo);
 //                TecentTjSdk.submitUserInfo(false); //老用户登录

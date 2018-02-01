@@ -1,6 +1,7 @@
 package com.kpocom.wulilc.noteperjectapplication;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.kpocom.wulilc.noteperjectapplication.common.WulilcConfig;
 import com.kpocom.wulilc.noteperjectapplication.utils.Writelog;
@@ -17,6 +18,8 @@ public class WApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Log.d("TAG","WApplication.onCreate()");
 
         //实例调试开关
         Writelog.init(true);

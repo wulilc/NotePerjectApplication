@@ -13,9 +13,6 @@ import com.kpocom.wulilc.noteperjectapplication.WApplication;
 import com.kpocom.wulilc.noteperjectapplication.common.WCommon;
 import com.kpocom.wulilc.noteperjectapplication.common.WulilcConfig;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import dmax.dialog.SpotsDialog;
 
 /**

@@ -4,16 +4,13 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-
-import android.content.Context;
-import android.util.Log;
-
 import com.kpocom.wulilc.noteperjectapplication.service.WService;
 import com.kpocom.wulilc.noteperjectapplication.utils.Writelog;
 
 
 /**
- * Created by wulilc on 2018/2/1.
+ * Created by wulilc on 2018/2/1
+ * 和同包名下的TCP相似  方法就不写那么复杂了 只是因为懒
  */
 
 public class WSocketUDPCommunication {

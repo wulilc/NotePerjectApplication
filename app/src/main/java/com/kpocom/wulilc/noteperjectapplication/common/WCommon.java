@@ -11,6 +11,10 @@ import java.util.TimerTask;
 
 public class WCommon {
 
+    public static String WJISUSHUJUAPPKEY = "b7dd2459d2538a4a";
+
+    public static String WWEATHERHOUXUURL = "?appkey=b7dd2459d2538a4a&city=";
+
     /**
      * 避免一个按钮多次点击
      */
