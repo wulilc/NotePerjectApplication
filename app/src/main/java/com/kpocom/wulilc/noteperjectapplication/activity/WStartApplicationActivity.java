@@ -1,60 +1,61 @@
 package com.kpocom.wulilc.noteperjectapplication.activity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-
-import com.itheima.dialogviewpager.ItHeiMaDialog;
-import com.itheima.dialogviewpager.ZoomOutPageTransformer;
+import android.os.Handler;
+import android.view.animation.DecelerateInterpolator;
 import com.kpocom.wulilc.noteperjectapplication.R;
-import com.kpocom.wulilc.noteperjectapplication.WApplication;
-import com.kpocom.wulilc.noteperjectapplication.common.WCommon;
-import com.kpocom.wulilc.noteperjectapplication.common.WulilcConfig;
-
-import dmax.dialog.SpotsDialog;
+import com.kpocom.wulilc.noteperjectapplication.databinding.ActivityWwelcomBinding;
 
 /**
  * Created by wulilc on 2018/1/30.
  */
 
-public class WStartApplicationActivity extends Activity {
-
-    private AlertDialog alertDialog;
-    private WApplication application;
+public class WStartApplicationActivity extends BaseActivity<ActivityWwelcomBinding> {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int getLayoutId() {
+        return R.layout.activity_wwelcom;
+    }
 
-        application = (WApplication) getApplication();
+    @Override
+    public void initView(Bundle savedInstanceState) {
 
-        alertDialog = new SpotsDialog(this,R.style.WStartApplicationCustom);
-        alertDialog.show();
-        WCommon.wStartTimerTaskForOnce(new WCommon.DoSomeThing() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void doSomeThing() {
-                alertDialog.dismiss();
-                if (!WulilcConfig.getIsStartApplicationStatus()){
-                    ItHeiMaDialog.getInstance()
-                            .setPageTransformer(new ZoomOutPageTransformer())
-                            .setImages(new int[]{R.drawable.show1, R.drawable.show2, R.drawable.show3, R.drawable.show4,R.drawable.timg})
-                            .show(getFragmentManager()).setOutsideIsTransparent(false);
-                }
-                WulilcConfig.setIsStartApplicationStatus(true);
-                WulilcConfig.save();
+            public void run() {
+                ObjectAnimator animator = ObjectAnimator.ofFloat(getBinding().activityWelcome, "alpha", 1f, 0f);
+                animator.setDuration(1500);
+                animator.setInterpolator(new DecelerateInterpolator());
+                animator.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                    }
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        jump();
+                    }
 
-//                if (application.isUserLogin){
-                startActivity(new Intent(WStartApplicationActivity.this,WApplicationMainActivity.class));
-//                }else {
-//                    startActivity(new Intent(WStartApplicationActivity.this,WUserLoginAcitivity.class));
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+                    }
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
 
-//                }
+                    }
+                });
+                animator.start();
             }
-        },3000);
+        }, 3000);
+    }
 
+    private void jump() {
+        Intent intent = new Intent(this, WApplicationMainActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
 }

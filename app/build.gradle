@@ -38,5 +38,10 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.github.open-android:RetrofitUtils:0.1.9'
+    compile 'com.github.open-android:CityPickerWebView:0.1.0'
+    compile 'com.github.open-android:MaterailDialog:v1.0.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

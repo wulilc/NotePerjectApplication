@@ -1,80 +1,71 @@
 package com.kpocom.wulilc.noteperjectapplication.activity;
 
-import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.kpocom.wulilc.noteperjectapplication.utils.Writelog;
+
+import com.kpocom.wulilc.noteperjectapplication.utils.WSwipebackHelper.WSwipebackHelper;
 
 /**
  * Created by wulilc on 2018/1/30.
  */
 
 public abstract class BaseActivity <T extends ViewDataBinding> extends AppCompatActivity{
-    private String TAG;
 
-    public BaseActivity(String TAG){
-        this.TAG = TAG;
-    }
+    private View mainView;
+    private ViewDataBinding binding;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Writelog.i(TAG,"执行了"+TAG+".onCreate()方法");
+        int layoutId = getLayoutId();
         super.onCreate(savedInstanceState);
-        onCreate();
-        InitView();
-        InitData();
-    }
+        WSwipebackHelper.onCreate(this);
+        WSwipebackHelper.getCurrentPage(this)
+                .setSwipeBackEnable(true)
+                .setSwipeSensitivity(0.5f)
+                .setSwipeRelateEnable(true)
+                .setSwipeRelateOffset(300)
+                .setSwipeEdgePercent(0.1f);
+        try {
+            binding = DataBindingUtil.setContentView(this, layoutId);
+            if (binding != null) {
+                mainView = binding.getRoot();
+            } else {
+                mainView = LayoutInflater.from(this).inflate(layoutId, null);
+                setContentView(mainView);
+            }
 
-    public abstract void onCreate();
-    public abstract void InitView();
-    public abstract void InitData();
+        } catch (NoClassDefFoundError e) {
+            mainView = LayoutInflater.from(this).inflate(layoutId, null);
+            setContentView(mainView);
+        }
+        initView(savedInstanceState);
+    }
 
     @Override
-    protected void onStart() {
-        Writelog.i(TAG,"执行了"+TAG+".onStart()方法");
-        super.onStart();
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        WSwipebackHelper.onPostCreate(this);
     }
 
-    public abstract void OnRestart();
-    @Override
-    protected void onRestart() {
-        Writelog.i(TAG,"执行了"+TAG+".onRestart()方法");
-        super.onRestart();
-        OnRestart();
-    }
-
-    public abstract void OnPostResume();
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        OnPostResume();
-    }
-
-    public abstract void OnPause();
-    @Override
-    protected void onPause() {
-        Writelog.i(TAG,"执行了"+TAG+".onPause()方法");
-        super.onPause();
-        OnPause();
-    }
-
-    public abstract void OnStop();
-    @Override
-    protected void onStop() {
-        Writelog.i(TAG,"执行了"+TAG+".onStop()方法");
-        super.onStop();
-        OnStop();
-    }
-
-    public abstract void OnDestroy();
     @Override
     protected void onDestroy() {
-        Writelog.i(TAG,"执行了"+TAG+".onDestroy()方法");
         super.onDestroy();
-        OnDestroy();
+        WSwipebackHelper.onDestroy(this);
     }
+
+    public T getBinding() {
+        return (T) binding;
+    }
+
+    public abstract int getLayoutId();
+
+    public abstract void initView(Bundle savedInstanceState);
 
 }

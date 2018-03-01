@@ -26,10 +26,10 @@ public class WApplicationMainActivity extends AppCompatActivity {
 
         tabView= (TabView) findViewById(R.id.tabView);
 
-        initView();
-
         WPostRequstWeatherInterface wPostRequstWeatherInterface = new WPostRequstWeatherInterface();
         wPostRequstWeatherInterface.wpostRequstWeather();
+
+        initView();
 
     }
 
